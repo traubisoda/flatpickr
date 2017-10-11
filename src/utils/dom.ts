@@ -40,18 +40,27 @@ export function findParent(
 export function createNumberInput(inputClassName: string) {
   const wrapper = createElement<HTMLDivElement>("div", "numInputWrapper"),
     numInput = createElement<HTMLInputElement>(
-      "input",
+      "select",
       "numInput " + inputClassName
-    ),
-    arrowUp = createElement<HTMLSpanElement>("span", "arrowUp"),
-    arrowDown = createElement<HTMLSpanElement>("span", "arrowDown");
+    );
 
-  numInput.type = "text";
-  numInput.pattern = "\\d*";
+  const curDate = new Date();
+  for (
+    var i = curDate.getFullYear() - 120;
+    i <= curDate.getFullYear() - 14;
+    ++i
+  ) {
+    var opt = createElement("option");
+    opt.value = i;
+    opt.innerHTML = i;
+    numInput.append(opt);
+  }
+
+  numInput.addEventListener("change", function(e) {
+    self.changeYear(parseInt(e.target.value));
+  });
 
   wrapper.appendChild(numInput);
-  wrapper.appendChild(arrowUp);
-  wrapper.appendChild(arrowDown);
 
   return wrapper;
 }
