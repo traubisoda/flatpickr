@@ -45,19 +45,15 @@ export function createNumberInput(inputClassName: string) {
     );
 
   const curDate = new Date();
-  for (
-    var i = curDate.getFullYear() - 120;
-    i <= curDate.getFullYear() - 14;
-    ++i
-  ) {
-    var opt = createElement("option");
+  for (let i = curDate.getFullYear() - 120; i <= curDate.getFullYear() - 14; ++i) {
+    const opt = createElement("option");
     opt.value = i;
     opt.innerHTML = i;
     numInput.append(opt);
   }
 
-  numInput.addEventListener("change", function(e) {
-    self.changeYear(parseInt(e.target.value));
+  numInput.addEventListener("change", (e) => {
+    this.changeYear(parseInt(e.target.value));
   });
 
   wrapper.appendChild(numInput);

@@ -898,7 +898,7 @@ function FlatpickrInstance(
     );
     self.currentMonthElement.title = self.l10n.scrollTitle;
 
-    const yearInput = createNumberInput("cur-year");
+    const yearInput = createNumberInput.call(self, "cur-year");
     self.currentYearElement = yearInput.childNodes[0] as HTMLInputElement;
     self.currentYearElement.title = self.l10n.scrollTitle;
 
