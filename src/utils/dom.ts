@@ -46,10 +46,10 @@ export function createNumberInput(inputClassName: string) {
 
   const curDate = new Date();
   for (let i = curDate.getFullYear() - 120; i <= curDate.getFullYear() - 14; ++i) {
-    const opt = createElement("option");
-    opt.value = i;
-    opt.innerHTML = i;
-    numInput.append(opt);
+    const opt = createElement<HTMLOptionElement>("option", "numInput");
+    opt.value = i.toString();
+    opt.innerHTML = i.toString();
+    numInput.appendChild(opt);
   }
 
   numInput.addEventListener("change", (e) => {
